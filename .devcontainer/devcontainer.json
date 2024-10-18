@@ -1,11 +1,24 @@
 {
     // Name this configuration
     "name": "Codespace for Skills!",
+    "build": {
+        "dockerfile": "Dockerfile", // Specify the Dockerfile if you're using one
+        "context": ".." // Adjust as necessary based on your repo structure
+    },
     "customizations": {
         "vscode": {
             "extensions": [
                 "GitHub.copilot"
-            ]
+            ],
+            "settings": {
+                // Add any specific VSCode settings here
+                "editor.formatOnSave": true
+            }
         }
-    }
+    },
+    "postCreateCommand": "npm install", // Example command to run after creating the container
+    "remoteUser": "vscode", // Set the user for the container (optional)
+    "forwardPorts": [3000], // Forward specific ports if needed
+    "initializeCommand": "echo 'Welcome to your Codespace!'", // Optional welcome message
+    "shutdownAction": "none" // Specify how to handle shutdown (none, stop, etc.)
 }
